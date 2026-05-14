@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Spline+Sans:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --app-bg: #f7f4ef;
+  --app-ink: #0f172a;
+  --app-accent: #0ea5a4;
+  --app-accent-strong: #0f766e;
+  --app-surface: #ffffff;
+  --app-muted: #64748b;
+  --font-body: 'Spline Sans', 'Segoe UI', sans-serif;
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+}
+
+html,
+body {
+  font-family: var(--font-body);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #d1fae5 0%, transparent 60%),
+    radial-gradient(1200px 600px at 90% -10%, #fde68a 0%, transparent 55%),
+    var(--app-bg);
+  color: var(--app-ink);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e9e5de;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b6b1a6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8f8a80;
+}
+
+/* Button defaults */
+button {
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+/* Input defaults */
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* Card hover effect */
+.card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

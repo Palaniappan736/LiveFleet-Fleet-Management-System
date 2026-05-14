@@ -12,8 +12,6 @@ export const VehiclesPage = () => {
   /* ── Stabilize bus list to prevent scroll-to-top on every poll ──── */
   const [displayBuses, setDisplayBuses] = useState([]);
   const prevFingerprintRef = useRef('');
-  const pendingScrollRestoreRef = useRef(false);
-  const scrollYRef = useRef(0);
 
   useEffect(() => {
     // Only update displayBuses when visible card data actually changes
@@ -24,18 +22,9 @@ export const VehiclesPage = () => {
     ]));
     if (fp !== prevFingerprintRef.current) {
       prevFingerprintRef.current = fp;
-      // Keep current page position stable while cards refresh from polling.
-      scrollYRef.current = window.scrollY || 0;
-      pendingScrollRestoreRef.current = true;
       setDisplayBuses(rawBuses);
     }
   }, [rawBuses]);
-
-  useEffect(() => {
-    if (!pendingScrollRestoreRef.current) return;
-    pendingScrollRestoreRef.current = false;
-    window.scrollTo({ top: scrollYRef.current, left: 0, behavior: 'auto' });
-  }, [displayBuses]);
 
   const filtered = useMemo(() => {
     if (!search) return displayBuses;
